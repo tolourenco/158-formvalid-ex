@@ -32,32 +32,42 @@
   {
     rules:{
 
-      localidade:"required",
+      localidade: {
+        required: true,
+        minlength: 5,
+      },
+
 
       email1: {
         required: true,
         minlength: 5,
+        email: true,
       },
 
       email2: {
         required: true,
         minlength: 5,
-        equalTo: "#email1"
-      }, 
+        equalTo: "#email1",
+        email: true,
+      },
     },
 
     messages:{
-      localidade:'a localida é obrigatoria',
-      
+      localidade:'a localida tem de ter mais de 5 caractares',
+
       email1: {
-        required: "email obrigatorio"
+        email: "O email e um campo obrigatorio",
+        required: "email obrigatorio",
+        minlength: jQuery.validator.format("insira pelo menos {0} characters"),
       },
       
       email2: {
         required: "repita o seu email",
         minlength: jQuery.validator.format("insira pelo menos {0} characters"),
         equalTo: "devem ser iguais",
-      },    
+      },
+
+
 
     },
   }
